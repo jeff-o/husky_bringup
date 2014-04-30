@@ -1,12 +1,16 @@
 <launch>
 <!-- imu -->
 <node pkg="microstrain_3dmgx2_imu" type="imu_node" name="microstrain_imu">
-<param name="time_offset" value="-0.040" />
-<param name="port" type="string" value="/dev/microstrain" />
-<param name="autostart" type="bool" value="true" />
-<param name="frameid" type="string" value="imu" />
-<param name="autocalibrate" type="bool" value="true" />
-<param name="angular_velocity_stdev" type="double" value="0.00017" />
-<param name="max_drift_rate" value="0.0005" />
+  <param name="time_offset" value="-0.040" />
+  <param name="port" type="string" value="/dev/microstrain" />
+  <param name="autostart" type="bool" value="true" />
+  <param name="frameid" type="string" value="imu" />
+  <param name="autocalibrate" type="bool" value="true" />
+  <param name="angular_velocity_stdev" type="double" value="0.00017" />
+  <param name="max_drift_rate" value="0.0005" />
 </node>
+
+<node pkg="tf" type="static_transform_publisher" name="imu_tf"
+    args="$(optenv HUSKY_IMU_TF 0 0 0 -1.5705 0 3.1415) base_link imu_link 10"/>
+
 </launch>
