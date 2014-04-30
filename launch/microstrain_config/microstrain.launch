@@ -11,6 +11,6 @@
 </node>
 
 <node pkg="tf" type="static_transform_publisher" name="imu_tf"
-    args="$(optenv HUSKY_IMU_TF 0 0 0 -1.5705 0 3.1415) base_link imu_link 10"/>
+    args="$(optenv HUSKY_IMU_TF 0 0 0 0 0 3.1415) base_link imu_link 10"/>
 
 </launch>
